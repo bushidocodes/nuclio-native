@@ -84,4 +84,8 @@ Transfer/sec:     10.15MB
 
 ### Benchmarking with custom runtime arguments
 
-TODO
+We can set the x-nuclio-arguments header using a LuaScript
+
+```bash
+wrk -c 36 -t 36 -d 10 -s script.lua http://172.17.0.1:43863
+```
