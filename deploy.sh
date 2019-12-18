@@ -12,7 +12,5 @@ nuctl deploy $binary \
 --run-image $binary:latest \
 --runtime shell \
 --handler $binary \
---min-replicas 16 \
---replicas 16 \
 --triggers '{ "http": { "maxWorkers": 16, "kind": "http", "workerAvailabilityTimeoutMilliseconds": 100000, "attributes": {"port": 1337} } }' \
 --runtime-attrs "$runtimeAttrs"
