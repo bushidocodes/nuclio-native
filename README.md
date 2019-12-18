@@ -9,6 +9,7 @@ This repository shows how to run pre-compiled binaries on Nuclio via their suppo
 4. Copy `nuctl` to `/usr/local/bin/` and confirm that it is in your path by executing `nuctl --help`
 5. [Download and install wrk](https://github.com/wg/wrk/releases), using the same logic as in steps 2-4.
 6. Optinally install httpie via `sudo apt-get install httpie`. You can alternatively use `curl` if you prefer that.
+7. To optimize concurrent performance, modify the value of the maxWorkers field in `deploy.sh` to match the number of cores on your system. You can find this value by executing `nproc`
 
 ## Hello World Example
 
