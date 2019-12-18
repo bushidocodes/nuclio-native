@@ -1,0 +1,25 @@
+webAdmin:
+    enabled: false
+    listenAddress: :8081
+logger:
+    sinks:
+        stdout:
+        driver: stdout
+    system:
+    - level: info
+        sink: stdout
+    functions:
+    - level: info
+        sink: stdout
+metrics:
+    sinks:
+        myPromPull:
+        kind: prometheusPull
+        url: :8090
+        attributes:
+            jobName: myPullJob
+            instanceName: myPullInstance
+    system:
+    - myPromPull
+    functions:
+    - myPromPull
