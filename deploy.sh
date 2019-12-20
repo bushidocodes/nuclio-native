@@ -12,6 +12,6 @@ nuctl deploy $binary \
 --run-image $binary:latest \
 --runtime shell \
 --handler $binary \
---triggers '{ "http": { "maxWorkers": 16, "kind": "http", "workerAvailabilityTimeoutMilliseconds": 100000, "attributes": {"port": 1338} } }' \
+--triggers '{ "http": { "maxWorkers": 1, "kind": "http", "workerAvailabilityTimeoutMilliseconds": 100000, "attributes": {"port": 1338} } }' \
 --runtime-attrs "$runtimeAttrs" \
 --platform-config '{"kind":"local","webAdmin":{"enabled":false,"listenAddress":":8081"},"healthCheck":{"enabled":true,"listenAddress":":8082"},"logger":{"sinks":{"stdout":{"kind":"stdout"}},"system":[{"level":"debug","sink":"stdout"}],"functions":[{"level":"debug","sink":"stdout"}]},"metrics":{}}'
