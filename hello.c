@@ -12,9 +12,10 @@ int hello(int argc, char **argv)
     return 0;
 }
 
-void serialize_timestamp(struct timeval *val, char *result) {
+void serialize_timestamp(struct timeval *val, char *result) 
+{
     char buffer[7];
-    strftime(result,50,"%m-%d-%Y  %T.",localtime(&val->tv_sec));
+    strftime(result, 50, "%T.", localtime(&val->tv_sec));
     sprintf(buffer, "%ld",(val->tv_usec));
     strncat(result, buffer, TIMESTAMP_BUFFER - (strlen(buffer) + 1));
 }
