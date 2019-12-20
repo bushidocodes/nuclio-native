@@ -12,11 +12,14 @@ int hello(int argc, char **argv)
     return 0;
 }
 
-void serialize_timestamp(struct timeval *val, char *result) 
+void serialize_timestamp(struct timeval *val, char *result)
 {
     char buffer[7];
-    strftime(result, 50, "%T.", localtime(&val->tv_sec));
-    sprintf(buffer, "%ld",(val->tv_usec));
+    struct tm *current_time = localtime(&val->tv_sec);
+    // Nuclio forces zulu time, and I can't figure out how to set this properly, so manually adjust
+    current_time->tm_hour -= 5;
+    strftime(result, 50, "%T.", current_time);
+    sprintf(buffer, "%06ld", (val->tv_usec));
     strncat(result, buffer, TIMESTAMP_BUFFER - (strlen(buffer) + 1));
 }
 
@@ -25,7 +28,7 @@ int main(int argc, char **argv)
     struct timeval start, end;
     char startStr[TIMESTAMP_BUFFER], endStr[TIMESTAMP_BUFFER];
     gettimeofday(&start, NULL);
-	int rc = hello(argc, argv);
+    int rc = hello(argc, argv);
     gettimeofday(&end, NULL);
     serialize_timestamp(&start, startStr);
     serialize_timestamp(&end, endStr);
