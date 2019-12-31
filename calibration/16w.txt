@@ -1,0 +1,168 @@
+*********************************************
+* ab -c 100 -n 10000 http://localhost:1338/ *
+*********************************************
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+
+
+Server Software:        nuclio
+Server Hostname:        localhost
+Server Port:            1338
+
+Document Path:          /
+Document Length:        83 bytes
+
+Concurrency Level:      100
+Time taken for tests:   2.243 seconds
+Complete requests:      10000
+Failed requests:        0
+Total transferred:      2350000 bytes
+HTML transferred:       830000 bytes
+Requests per second:    4458.05 [#/sec] (mean)
+Time per request:       22.431 [ms] (mean)
+Time per request:       0.224 [ms] (mean, across all concurrent requests)
+Transfer rate:          1023.09 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.2      0       2
+Processing:    16   22  12.1     20     234
+Waiting:       16   22  12.1     20     234
+Total:         16   22  12.2     20     234
+
+Percentage of the requests served within a certain time (ms)
+  50%     20
+  66%     21
+  75%     22
+  80%     22
+  90%     25
+  95%     26
+  98%     29
+  99%     86
+ 100%    234 (longest request)
+*********************************************
+* ab -c 200 -n 10000 http://localhost:1338/ *
+*********************************************
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+
+
+Server Software:        nuclio
+Server Hostname:        localhost
+Server Port:            1338
+
+Document Path:          /
+Document Length:        83 bytes
+
+Concurrency Level:      200
+Time taken for tests:   2.300 seconds
+Complete requests:      10000
+Failed requests:        0
+Total transferred:      2350000 bytes
+HTML transferred:       830000 bytes
+Requests per second:    4347.94 [#/sec] (mean)
+Time per request:       45.999 [ms] (mean)
+Time per request:       0.230 [ms] (mean, across all concurrent requests)
+Transfer rate:          997.82 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    2  44.9      0    1032
+Processing:     2   42  14.1     39     255
+Waiting:        2   41  14.1     39     255
+Total:          6   44  50.6     39    1163
+
+Percentage of the requests served within a certain time (ms)
+  50%     39
+  66%     41
+  75%     42
+  80%     43
+  90%     47
+  95%     54
+  98%    127
+  99%    130
+ 100%   1163 (longest request)
+*********************************************
+* ab -c 500 -n 10000 http://localhost:1338/ *
+*********************************************
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+
+
+Server Software:        nuclio
+Server Hostname:        localhost
+Server Port:            1338
+
+Document Path:          /
+Document Length:        83 bytes
+
+Concurrency Level:      500
+Time taken for tests:   2.250 seconds
+Complete requests:      10000
+Failed requests:        0
+Total transferred:      2350000 bytes
+HTML transferred:       830000 bytes
+Requests per second:    4444.09 [#/sec] (mean)
+Time per request:       112.509 [ms] (mean)
+Time per request:       0.225 [ms] (mean, across all concurrent requests)
+Transfer rate:          1019.88 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0   24 152.5      0    1038
+Processing:     5   85  36.7     96    1139
+Waiting:        5   85  36.7     96    1139
+Total:         17  109 160.5    101    1172
+
+Percentage of the requests served within a certain time (ms)
+  50%    101
+  66%    107
+  75%    108
+  80%    110
+  90%    119
+  95%    124
+  98%   1100
+  99%   1140
+ 100%   1172 (longest request)
+**************************************************
+* wrk -c 100 -t 100 -d 10 http://localhost:1338/ *
+**************************************************
+Running 10s test @ http://localhost:1338/
+  100 threads and 100 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    18.60ms    2.32ms  35.76ms   80.41%
+    Req/Sec    53.73      5.79    80.00     53.67%
+  54050 requests in 10.10s, 11.13MB read
+Requests/sec:   5351.32
+Transfer/sec:      1.10MB
+**************************************************
+* wrk -c 200 -t 200 -d 10 http://localhost:1338/ *
+**************************************************
+Running 10s test @ http://localhost:1338/
+  200 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    37.65ms    4.41ms  58.67ms   81.48%
+    Req/Sec    26.52      4.94    60.00     64.01%
+  53455 requests in 10.10s, 11.01MB read
+Requests/sec:   5292.41
+Transfer/sec:      1.09MB
+**************************************************
+* wrk -c 500 -t 500 -d 10 http://localhost:1338/ *
+**************************************************
+Running 10s test @ http://localhost:1338/
+  500 threads and 500 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    98.29ms   10.56ms 131.37ms   87.42%
+    Req/Sec    10.20      1.97    60.00     95.95%
+  50975 requests in 10.10s, 10.50MB read
+Requests/sec:   5045.90
+Transfer/sec:      1.04MB
