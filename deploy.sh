@@ -2,10 +2,12 @@
 
 # First Param: binary that we want to copy
 binary=$1
-# Second Param: Default Attributes we want to execute with
+# Second Param: Default Attributes we want to execute with. Note this is just one work, so super sloppy right now
 arguments=$2
+# Third Param: Content Type
+contentType=$3
 
-runtimeAttrs='{"arguments": "'$arguments'"}'
+runtimeAttrs='{"arguments": "'$arguments'", "responseHeaders": {"content-type": "'$contentType'"}}'
 docker build --build-arg binary=$binary -t $binary .   
 
 nuctl deploy $binary \
